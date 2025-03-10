@@ -1,57 +1,56 @@
-<img width="100" alt="logo" src="./public/taskly.svg" />
+<img width="100" alt="logo" src="./public/logo.svg" />
 
-# Taskly
+# Admin
 
-Тестовый проект для того что бы показать как можно создать проект на [FSD](https://feature-sliced.design/) технологии
+Test project to demonstrate how to create a project using [FSD](https://feature-sliced.design/) technology.
 
-#### Стек технологии:
+#### Technology stack:
 
 - [React](https://react.dev/learn) + [Typescript](https://www.typescriptlang.org/docs/)
 - [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) - a small, fast, and scalable bearbones state management solution
-- [Ant.design](https://ant.design/) - как готовые UI компоненты
-- [React Hook Form](https://react-hook-form.com/) - performant, flexible and extensible forms with easy-to-use validation.
-- [Zod](https://zod.dev/) - Проверка схемы на основе TypeScript-first со статическим выводом типа
-- [Vite](https://vitejs.dev/guide/) - быстрый сборщих
+- [Ant.design](https://ant.design/) - Help designers/developers building beautiful products more flexible and working with happiness
+- [React Hook Form](https://react-hook-form.com/) - performant, flexible and extensible forms with easy-to-use validation
+- [Zod](https://zod.dev/) - typeScript-first schema validation with static type inference
+- [Vite](https://vitejs.dev/guide/) - Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects
 
-## Основные требования к проекту
+## Key requirements for the project
 
 > [!NOTE]
-> Версия Node v20\*
+> Node version v21\*
 
-## For Developers
+## Developer Guide
 
 ```shell
 npm i && npm run dev
 ```
 
-запустить проект по адресу [localhost:4000](http://localhost:4000)
+Run the project at [localhost:4000](http://localhost:4000)
 
 > [!CAUTION]
-> Обязательно запустить команду
+> You must run the command
 >
 > ```shell
 > npm run prepare
 > ```
 
-[env.example](env.example) переименовать на .env посли если параметр VITE_USE_MSW=true,
-тогда можно будет тестировать локально.
+[env.example](env.example) rename it to .env. If the parameter VITE_USE_MSW=true, local testing will be available.
 
-для локально тестирование логин и пароль
+Login and password for local testing
 
 ```aiignore
 email: admin@gmail.com
 password: admin
 ```
 
-## For DevOps
+## DevOps Guide
 
-Сборщик [ViteJS](https://vitejs.dev/). По развертки на проде можно почитать тут [Deploying ViteJS](https://vitejs.dev/guide/static-deploy.html#building-the-app)
+[ViteJS](https://vitejs.dev/) bundler. Read more about production deployment here: [Deploying ViteJS](https://vitejs.dev/guide/static-deploy.html#building-the-app).
 
-### Для запуска проекта в production окружение запускаем команду:
+### To start the project in the production environment, run the command:
 
 ```shell
 npm i && npm run build
 ```
 
 > [!NOTE]
-> В корне проекта создается папка dist это и есть исходник фронта, надо что бы запускался index.html
+> A dist folder is created at the root of the project. This is the frontend build, and index.html should be launched.
