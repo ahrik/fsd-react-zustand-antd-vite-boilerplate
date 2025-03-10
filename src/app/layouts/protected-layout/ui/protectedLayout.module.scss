@@ -1,0 +1,20 @@
+@use '@/shared/styles/mixins';
+
+.protectedLayout {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  margin: 0 auto;
+  max-width: var(--app-max-width);
+  min-width: var(--app-min-width);
+
+  &Header {
+    height: 60px;
+    padding: 0 16px;
+  }
+
+  &Content {
+    padding: 24px 16px;
+    overflow-y: auto;
+  }
+}

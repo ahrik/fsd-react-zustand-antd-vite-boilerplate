@@ -1,0 +1,181 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Full API - Users, Sessions, Tasks
+  description: API for managing users, sessions, tasks
+
+servers:
+  - url: /api
+
+tags:
+  - name: Session
+    description: Endpoints related to session management
+  - name: Users
+    description: Endpoints for user management
+
+paths:
+  /session/me:
+    get:
+      tags:
+        - Session
+      operationId: getSession
+      summary: Get current session
+      description: |
+        Retrieves information about the current session, including user details and session ID.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '401':
+          description: Unauthorized - User is not authenticated
+
+  /session/sign-in:
+    post:
+      tags:
+        - Session
+      operationId: signIn
+      summary: Sign in
+      description: |
+        Authenticates the user and returns session details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignIn'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+
+  /session/sign-out:
+    post:
+      tags:
+        - Session
+      operationId: signOut
+      summary: Sign out
+      description: |
+        Ends the current session for the authenticated user.
+      responses:
+        '200':
+          description: Session successfully terminated
+        '401':
+          description: Unauthorized - User is not authenticated
+
+components:
+  schemas:
+    UserRole:
+      type: string
+      enum:
+        - admin
+        - editor
+        - viewer
+    User:
+      type: object
+      required:
+        - id
+        - name
+        - email
+        - role
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        role:
+          $ref: '#/components/schemas/UserRole'
+        name:
+          type: string
+        avatarId:
+          type: string
+    CreateUser:
+      type: object
+      required:
+        - id
+        - email
+        - password
+        - role
+        - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
+        name:
+          type: string
+        avatarId:
+          type: string
+    SignIn:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+    Session:
+      type: object
+      required:
+        - id
+        - name
+        - userId
+        - email
+        - role
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        avatarId:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        role:
+          $ref: '#/components/schemas/UserRole'
+
+  parameters:
+    UserId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  responses:
+    Success:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+              error:
+                type: string
+                nullable: true
+              success:
+                type: boolean

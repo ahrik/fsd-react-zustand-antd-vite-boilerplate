@@ -1,0 +1,31 @@
+@use '@/shared/styles/mixins';
+
+.publicLayout {
+  @include mixins.full-layout();
+
+  background-color: var(--bg-color);
+  display: grid;
+  overflow-x: hidden;
+  overflow-y: auto;
+  place-items: center;
+
+  &Content {
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 28px 3px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding: 32px;
+  }
+
+  &Children {
+    align-self: center;
+    justify-self: start;
+  }
+
+  &Logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+}

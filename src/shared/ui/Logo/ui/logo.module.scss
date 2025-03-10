@@ -1,0 +1,19 @@
+.logo {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.5rem;
+
+  &HidedText {
+    align-items: center;
+  }
+
+  &Icon {
+    color: var(--brand-color);
+    height: 40px;
+    width: 40px;
+  }
+
+  &Text {
+    font-size: 1.7rem;
+  }
+}
