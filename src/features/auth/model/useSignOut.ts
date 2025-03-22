@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useSession } from '@entities/session';
+import { useSessionStore } from '@entities/session';
 import { api } from '@shared/api';
 import { ROUTERS } from '@shared/constants';
 
 export function useSignOut() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const removeSession = useSession(({ removeSession }) => removeSession);
+  const removeSession = useSessionStore(({ removeSession }) => removeSession);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

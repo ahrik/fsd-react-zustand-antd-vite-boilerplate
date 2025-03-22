@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import { useTheme } from './themeContext';
+import { useEffect, useState } from 'react';
+import { Theme } from './themeContext';
 
 export const useDetectChangeSystemTheme = () => {
-  const { setTheme } = useTheme();
+  const [systemTheme, setSystemTheme] = useState<Theme>();
 
   const handleChange = (event: MediaQueryListEvent) => {
-    const systemTheme = event.matches ? 'dark' : 'light';
-    setTheme(systemTheme);
+    const theme = event.matches ? 'dark' : 'light';
+    setSystemTheme(theme);
   };
 
   useEffect(() => {
@@ -16,4 +16,8 @@ export const useDetectChangeSystemTheme = () => {
 
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
+
+  return {
+    systemTheme,
+  };
 };

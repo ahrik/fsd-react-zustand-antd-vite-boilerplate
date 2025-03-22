@@ -7,8 +7,8 @@ module.exports = {
     //       return convertToCamelCase(name); // Вызываем функцию преобразования
     //     },
     //     filter: filename => {
-    //       // Преобразовывать только файлы, оканчивающиеся на .module.scss
-    //       return filename.endsWith('.module.scss');
+    //       // Преобразовывать только файлы, оканчивающиеся на .model.scss
+    //       return filename.endsWith('.model.scss');
     //     },
     //   }),
   ],

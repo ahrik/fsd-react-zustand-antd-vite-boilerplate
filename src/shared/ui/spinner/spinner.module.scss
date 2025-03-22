@@ -1,0 +1,11 @@
+.spinner {
+  &IsFull {
+    display: grid;
+    height: 100%;
+    left: 0;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

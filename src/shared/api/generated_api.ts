@@ -59,7 +59,7 @@ export interface User {
 type SecondParameter<T extends (...args: any) => any> = Parameters<T>[1];
 
 /**
- * Retrieves information about the current session, including user details and session ID.
+ * Retrieves information about the current session, including profile details and session ID.
 
  * @summary Get current session
  */
@@ -68,7 +68,7 @@ export const getSession = (options?: SecondParameter<typeof createInstance>) => 
 };
 
 /**
- * Authenticates the user and returns session details.
+ * Authenticates the profile and returns session details.
 
  * @summary Sign in
  */
@@ -80,7 +80,7 @@ export const signIn = (signIn: BodyType<SignIn>, options?: SecondParameter<typeo
 };
 
 /**
- * Ends the current session for the authenticated user.
+ * Ends the current session for the authenticated profile.
 
  * @summary Sign out
  */
