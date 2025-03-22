@@ -1,25 +1,16 @@
 import { LoadingOutlined } from '@ant-design/icons';
 import { Flex, Spin, SpinProps } from 'antd';
+import clsx from 'clsx';
 
-const fullStyle = {
-  display: 'grid',
-  height: '100%',
-  left: 0,
-  placeItems: 'center',
-  position: 'absolute',
-  top: 0,
-  width: '100%',
-};
+import styles from './spinner.module.scss';
 
 type Props = SpinProps & {
   isFullScreen?: boolean;
 };
 
 export const Spinner = ({ isFullScreen, ...spinProps }: Props) => {
-  const styles = isFullScreen ? fullStyle : {};
-
   return (
-    <Flex align="center" gap="middle" style={styles}>
+    <Flex align="center" gap="middle" className={clsx(isFullScreen && styles.spinnerIsFull)}>
       <Spin indicator={<LoadingOutlined spin />} size="large" {...spinProps} />
     </Flex>
   );

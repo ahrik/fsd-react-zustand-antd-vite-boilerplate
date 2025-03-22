@@ -11,7 +11,7 @@ tags:
   - name: Session
     description: Endpoints related to session management
   - name: Users
-    description: Endpoints for user management
+    description: Endpoints for profile management
 
 paths:
   /session/me:

@@ -3,13 +3,18 @@ import { ConfigProvider, theme as themeAtnd } from 'antd';
 import { theme } from './theme/theme';
 import { useThemeAlgorithm } from './useThemeAlgorithm';
 
-export function AntProvider({ children }: PropsWithChildren) {
+type Props = PropsWithChildren & {
+  appTheme?: 'light' | 'dark';
+};
+
+export function AntProvider({ children, appTheme }: Props) {
   const { systemTheme } = useThemeAlgorithm();
+  const currentTheme = appTheme || systemTheme;
 
   return (
     <ConfigProvider
       csp={{ nonce: 'admin-' }}
-      theme={{ algorithm: systemTheme === 'light' ? themeAtnd.defaultAlgorithm : themeAtnd.darkAlgorithm, ...theme }}
+      theme={{ algorithm: currentTheme === 'light' ? themeAtnd.defaultAlgorithm : themeAtnd.darkAlgorithm, ...theme }}
     >
       {children}
     </ConfigProvider>

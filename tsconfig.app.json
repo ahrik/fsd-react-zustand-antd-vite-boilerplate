@@ -8,6 +8,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
+    "allowJs": true,
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": false,
     "isolatedModules": true,
