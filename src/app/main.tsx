@@ -3,25 +3,27 @@ import './styles/index.css';
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { IS_DEV, USE_MSW } from '@shared/constants';
+import { USE_MSW } from '@shared/constants';
 import { App } from './App';
 
 const createdRoot = createRoot(document.getElementById('root')!);
 
-if (USE_MSW === 'true' && IS_DEV) {
+const AppComponent = () => (
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+
+if (USE_MSW === 'true') {
   import('@/shared/api/msw')
-    .then(({ worker }) => worker.start())
+    .then(({ initWorker }) => initWorker())
     .then(() => {
-      createdRoot.render(
-        <StrictMode>
-          <App />
-        </StrictMode>
-      );
+      createdRoot.render(<AppComponent />);
+    })
+    .catch(error => {
+      console.error('MSW failed to start:', error);
+      createdRoot.render(<AppComponent />);
     });
 } else {
-  createdRoot.render(
-    <StrictMode>
-      <App />
-    </StrictMode>
-  );
+  createdRoot.render(<AppComponent />);
 }
